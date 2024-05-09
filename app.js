@@ -59,19 +59,35 @@ searchBook.addEventListener("keyup", function (e) {
   } else {
    parentNode.style.display = "none"
   }
-
-// const searchBook = document.forms["search-books"];
-// const listOfBooks = document.querySelectorAll("#book-list li .name")
-// console.log(searchBook)
-//
-// searchBook.addEventListener("Keyup", function (e){
-//  let inputText = e.target.value.toLowerCase()
-//
-//  listOfBooks.forEach((book)=>{
-//   let title = book.textContent.toLowerCase()
-//   let isIncludeInputText = title.includes()
-//  })
-
  })
+ })
+ const addBook = document.forms["add-book"];
+  console.log(addBook);
 
+  addBook.addEventListener("submit", (e) => {
+   e.preventDefault();
+   const  inputValue = addBook.querySelector("input").value.trim();
+   // console.log(inputValue)
+
+   if(inputValue) {
+    const liTag = document.createElement("li");
+    const firstSpan = document.createElement("span");
+    const secondSpan = document.createElement("span");
+
+    firstSpan.classList = "name"
+    secondSpan.className = "delete"
+
+    liTag.append(firstSpan);
+    liTag.append(secondSpan);
+
+    // console.log(liTag);
+
+    firstSpan.textContent = inputValue;
+    secondSpan.textContent = "delete";
+
+    bookList.appendChild(liTag);
+    // bookList.prepend(liTag);
+
+    addBook.reset();
+   }
 })
